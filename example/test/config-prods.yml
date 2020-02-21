@@ -1,0 +1,53 @@
+stages:
+        - build
+        - beta
+        - 127.0.0.1
+        - 2
+
+.build_job:
+        image: cirrusci/flutter:latest
+        stage: build
+        artifacts:
+                untracked: true
+
+buildDevelop:
+        extends: .build_job
+        script:
+                - cd app
+                - flutter build apk --flavor prods --release -t lib/main_prods.dart
+        only:
+                - schedules
+
+buildStage:
+        extends: .build_job
+        script:
+                - cd app
+                - flutter build apk --flavor stg --release -t lib/main_stage.dart
+        only:
+                - master
+
+.beta_job:
+        image: cirrusci/flutter:latest
+        stage: beta
+
+betaDevelop:
+        extends: .beta_job
+        dependencies:
+                - buildDevelop
+        script:
+                - cd app/android/fastlane
+                - sudo gem install bundler:2.0.1
+                - fastlane $DEPLOYMENT_ENV
+        only:
+                - schedules
+
+betaStage:
+        extends: .beta_job
+        dependencies:
+                - buildStage
+        script:
+                - cd app/android/fastlane
+                - sudo gem install bundler:2.0.1
+                - fastlane stage
+        only:
+                - master

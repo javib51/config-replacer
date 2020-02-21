@@ -1,0 +1,11 @@
+env: prods
+
+mysql:
+  ip: "127.0.0.1"
+  user: app
+  password: password
+  s:
+    s:
+      p: 2
+
+domain: mydomain.com
