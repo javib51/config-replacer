@@ -96,9 +96,10 @@ func convertMapTo1DMap(i map[string]interface{}) map[string]interface{} {
 			tmp[k] = v
 		case reflect.Float64:
 			tmp[k] = v
-
-		default:
-			panic("Arrays are not supported")
+		
+		// skip other type of vars for now
+		// default:
+		// 	panic("Arrays are not supported")
 		}
 	}
 

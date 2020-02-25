@@ -22,6 +22,7 @@ config-replacer
 ### Go Patch ###
 /vendor/
 /Godeps/
+/build/
 
 ### VisualStudioCode ###
 .vscode/*

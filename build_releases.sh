@@ -9,7 +9,7 @@ package_name=$package
 
 #the full list of the platforms: https://golang.org/doc/install/source#environment
 platforms=(
-"darwin/386"
+"darwin/amd64"
 # "dragonfly/amd64"
 # "freebsd/386"
 # "freebsd/amd64"

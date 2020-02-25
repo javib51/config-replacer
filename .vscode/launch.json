@@ -12,8 +12,8 @@
             "program": "${workspaceFolder}",
             "env": {},
             "args": [
-                "-f", "example/config.yml", 
-                "-w", "example/test"
+                "-f", "/Users/jbenitez/workspace/trukatu/infra/tmp/config.yml", 
+                "-w", "/Users/jbenitez/workspace/trukatu/infra/tmp/backend"
             ]
         }
     ]
